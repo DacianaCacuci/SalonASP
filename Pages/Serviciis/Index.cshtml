@@ -1,0 +1,48 @@
+﻿@page
+@model SalonASP.Pages.Serviciis.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Gestiune servicii prestate</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Servicii[0].Denumire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Servicii[0].Pret)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Servicii[0].Timp_Executie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Servicii) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Denumire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pret)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp_Executie)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ServiciiID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ServiciiID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ServiciiID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
